@@ -4,7 +4,11 @@
 <%@page import="com.service.BusService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<jsp:useBean id="admin" class="com.dto.Admin" scope="session"></jsp:useBean>
+<%
+		if(admin!=null && admin.getAdminId()>0){
+%>
+<%@ include file="cache_control.jsp"  %>
 <%
 BusService busService=new BusServiceImple();
 ArrayList<BusDetails> list=busService.showBus();
@@ -21,9 +25,13 @@ ArrayList<BusDetails> list=busService.showBus();
 	<div class="container-fluid">
 	<div class="jumbotron d-flex justify-content-center align-items-center bg-info" style="height:12vh">
 		<h1 style="color: white">ALL BUSES</h1>
-		
 	</div>
-	<td><a class="btn btn-dark btn-md" href="AdminHome.jsp">Back</a></td>
+	
+	<div class="row justify-content-between">
+	<a class="btn btn-dark btn-md ml-4" href="AdminHome.jsp">Back</a>
+	<a href="Logout.jsp" class="btn btn-danger my-2 my-sm-0 justify-content-end mr-4" style="font-size: 1 rem">Logout</a>
+	</div>
+	
 		<div class="row justify-content-center align-items-center mt-5">
 			<div class="col-10">
 				<table class="table">
@@ -55,7 +63,7 @@ ArrayList<BusDetails> list=busService.showBus();
       <td><%=b.getBookedSeats()%></td>
       <td><%=b.getAmount() %></td>
       <td><a class="btn btn-info btn-sm" href="UpdateBusForm.jsp?BusId=<%=b.getBusId()%>">Update</a></td>
-      <td><a class="btn btn-danger btn-sm" href="delete.jsp?BusId=<%=b.getBusId()%>">Delete</a></td>
+      <td><a class="btn btn-danger btn-sm" href="deleteBus.jsp?BusId=<%=b.getBusId()%>">Delete</a></td>
       
       
       </tr>
@@ -68,3 +76,9 @@ ArrayList<BusDetails> list=busService.showBus();
 	</div>
 </body>
 </html>
+
+<%
+		}else{
+			response.sendRedirect("AdminLogin.jsp");
+		}
+%>

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- 
- 
     
+ <jsp:useBean id="admin" class="com.dto.Admin" scope="session"></jsp:useBean>
+ <%
+		if(admin!=null && admin.getAdminId()>0){
+%>
+    <%@ include file="cache_control.jsp"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 		<div class="row">
 			
 			<div class="col-3">
-				<td><a class="btn btn-dark btn-md mt-2" href="AdminHome.jsp">Back</a></td>
+				<td><a class="btn btn-dark btn-md mt-1" href="AdminHome.jsp">Back</a></td>
 			</div>
 			
 			<div class="col-6">
@@ -74,10 +77,17 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 					</form>
 			</div>
 			
-			<div class="col-3">
-			
+			<div class="col-3 ">
+				<div class=" row mr-1 justify-content-end">
+					<a href="Logout.jsp" class="btn btn-danger my-2 my-sm-0 " style="font-size: 1 rem">Logout</a>
+					</div>
 			</div>
 		</div>
 	</div>	
 </body>
 </html>
+<%
+		}else{
+			response.sendRedirect("AdminLogin.jsp");
+		}
+%>

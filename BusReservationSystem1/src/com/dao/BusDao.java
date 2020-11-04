@@ -10,4 +10,5 @@ public interface BusDao {
 	ArrayList<BusDetails> showBus();
 	BusDetails getbusUpdateInfo(int busId);
 	int updateBusDetails(BusDetails busDetails);
+	int deleteBus(int busId);
 }

@@ -11,6 +11,6 @@
 if(b){
 	response.sendRedirect("AdminHome.jsp");
 } else {
-	response.sendRedirect("AdminLogin.jsp");
+	response.sendRedirect("AdminLogin.jsp?msg=Wrong Credentials");
 }
 %>

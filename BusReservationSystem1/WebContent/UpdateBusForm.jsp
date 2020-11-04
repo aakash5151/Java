@@ -3,7 +3,12 @@
 <%@page import="com.service.BusService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+   <jsp:useBean id="admin" class="com.dto.Admin" scope="session"></jsp:useBean>
+
+ <%
+		if(admin!=null && admin.getAdminId()>0){
+%>
+    <%@ include file="cache_control.jsp"  %> 
 
 <%
 	int busId = Integer.parseInt(request.getParameter("BusId"));
@@ -23,8 +28,9 @@
 <body>
 <div class="container">
 <div class="jumbotron d-flex justify-content-center align-items-center bg-info" style="height:12vh">
-		<h1 style="color: white">Update Form</h1>
+		<h1 style="color: white">UPDATE FORM</h1>
 	</div>
+	<td><a class="btn btn-dark btn-md mb-2" href="ListBusForm.jsp">Back</a></td>
 	<div class="col" style="height:88vh">
 	<form action="UpdateBus.jsp">
 	
@@ -76,3 +82,9 @@
 	</div>
 </body>
 </html>
+
+<%
+		}else{
+			response.sendRedirect("AdminLogin.jsp");
+		}
+%>

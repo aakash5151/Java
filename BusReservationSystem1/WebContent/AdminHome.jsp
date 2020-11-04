@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
- 
-    
+<jsp:useBean id="admin" class="com.dto.Admin" scope="session"></jsp:useBean>
+
+ <%
+		if(admin!=null && admin.getAdminId()>0){
+%>
+    <%@ include file="cache_control.jsp"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,14 +24,15 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 		</div> -->
 		<div >
 		<div class="row align-items-center bg-info" style="height:12vh">
-			<div class="col-9 text-light" style="font-size:32px;font-weight: bolder;">Bus Reservation System</div>
+			<div class="col-8 text-light" style="font-size:32px;font-weight: bolder;">Bus Reservation System</div>
 			<div class="col-3 text-light" style="font-size:22px;font-weight: bold;">Admin Home</div>
-		</div>
+			 <a href="Logout.jsp" class="btn btn-danger my-2 my-sm-0" style="font-size: 1 rem">Logout</a>
+   			</div>
 		
 		<div class="row" style="background:url(images/bus1.jpg)center no-repeat;background-size:cover;height:88vh;width:102%" >
 			
 			<div class="col-md-3 col-12">
-				
+				 
 			</div>
 			
 			<div class="col-md-6 col-12">
@@ -47,7 +52,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 			</div>
 			
-			<div class="col-md-3 col-12">
+			<div class="col-md-3 col-12 justify-content-end align-items-end">
 				
 			</div> 
 			
@@ -55,4 +60,8 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 </div>	
 </body>
 </html>
-
+<%
+		}else{
+			response.sendRedirect("AdminLogin.jsp");
+		}
+%>

@@ -133,4 +133,20 @@ public class BusDaoImple implements BusDao{
 		return i;
 	}
 
+	@Override
+	public int deleteBus(int busId) {
+		int i = 0;
+		try {
+		Connection con = myConn.getConn();
+		PreparedStatement s = con.prepareStatement("delete from busdetails where bus_id = ?");
+		s.setInt(1, busId);
+		i = s.executeUpdate();
+		s.close();
+		}catch (SQLException | ClassNotFoundException e) {
+			System.out.println("SQL EXCEPTION IN DTO DELETE BUS");
+			e.printStackTrace();
+		}
+		return i;
+	}
+
 }

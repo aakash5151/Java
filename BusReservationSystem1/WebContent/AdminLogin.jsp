@@ -19,7 +19,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 <body>
   
 <div class="container-fluid">
-<form action="AdminValidate.jsp">
+<form action="AdminValidate.jsp" method="post">
 	<div class="row" style="height:12vh;background:#f5f5f5">
 
         </div>
@@ -84,7 +84,10 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
                                 </div>
                             </div>
 
-
+								<div style="color:red;font-size:22px">
+								<%=(request.getParameter("msg")!=null)?request.getParameter("msg"):"" %>
+								</div>
+								
                             <!-- button -->
                             <div class=" col  mt-5 d-flex justify-content-center align-items-center">
 
@@ -106,8 +109,8 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
         </div>
        
         <div class="row" style="height:12vh;background:#f5f5f5">
-
-        </div>
+			
+			</div>
 
  </form>
     </div>

@@ -42,6 +42,12 @@ public class BusServiceImple implements BusService {
 		return busDao.updateBusDetails(busDetails);
 	}
 
+	@Override
+	public int deleteBus(int busId) {
+		
+		return busDao.deleteBus(busId);
+	}
+
 
 
 }
